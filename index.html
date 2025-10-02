@@ -1,310 +1,659 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selode.ai - Sovereign AI for the Enterprise</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Selode.ai | Sovereign AI, Your Way</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* --- Global Styles & Variables --- */
+        :root {
+            --primary-blue: #0A68FF;
+            --dark-blue: #053D99;
+            --light-grey: #F4F6F8;
+            --medium-grey: #E5E7EB;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --font-family: 'Inter', sans-serif;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background-color: #F3F4F6; /* Light gray background */
-            color: #111827; /* Dark text for readability */
+            font-family: var(--font-family);
+            color: var(--text-dark);
+            background-color: #FFFFFF;
+            line-height: 1.6;
         }
-        .gradient-text {
-            background: linear-gradient(90deg, #4F46E5, #00A9FF);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        .primary-cta {
-            background: linear-gradient(90deg, #4F46E5, #00A9FF);
-            color: #FFFFFF;
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+        }
+
+        p {
+            color: var(--text-light);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 1rem auto 2rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3);
         }
-        .primary-cta:hover {
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dark-blue);
             transform: translateY(-2px);
-            box-shadow: 0 7px 25px rgba(0, 169, 255, 0.4);
         }
-        .secondary-cta {
-            color: #4F46E5;
-            background-color: transparent;
-            border: 1px solid #4F46E5;
-            transition: all 0.3s ease;
-        }
-        .secondary-cta:hover {
-            background-color: #4F46E5;
-            color: #FFFFFF;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.6);
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(229, 231, 235, 0.7);
-            border-radius: 1.5rem;
-            transition: all 0.3s ease;
+            border-bottom: 1px solid var(--medium-grey);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .glass-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(79, 70, 229, 0.3);
-            box-shadow: 0 10px 30px -5px rgba(209, 213, 219, 0.5);
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .tab-button.active {
-            color: #4F46E5;
-            border-color: #4F46E5;
-            background-color: #EEF2FF;
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
         }
-        .scroll-animation {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
         }
-        .scroll-animation.animate {
-            opacity: 1;
-            transform: translateY(0);
+
+        .main-nav ul a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
         }
-        .partner-logo {
+
+        .main-nav ul a.nav-cta {
+            background-color: var(--light-grey);
+            padding: 8px 16px;
+            border-radius: 6px;
+        }
+        .main-nav ul a.nav-cta:hover {
+            background-color: var(--medium-grey);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 120px 0;
+            background-image: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('https://images.unsplash.com/photo-1639762681057-408e52192e40?auto=format&fit=crop&w=1400&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero h1, .hero .subtitle {
+            color: var(--text-dark);
+        }
+
+
+        /* --- Partners Section --- */
+        .partners {
+            padding: 40px 0;
+            background-color: var(--light-grey);
+        }
+        .partners-title {
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-light);
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+        .partner-logos {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .partner-logos img {
+            max-height: 40px;
             filter: grayscale(100%);
-            opacity: 0.5;
+            opacity: 0.7;
             transition: all 0.3s ease;
         }
-        .partner-logo:hover {
+        .partner-logos img:hover {
             filter: grayscale(0%);
             opacity: 1;
         }
+
+        /* --- Problems & Solutions Section --- */
+        .card {
+            background-color: white;
+            padding: 1.5rem;
+            border: 1px solid var(--medium-grey);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 250px;
+        }
+
+        .card-with-bg {
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        
+        .card-with-bg h3 {
+             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+        .problems-grid {
+            grid-template-columns: repeat(4, 1fr);
+            margin-bottom: 2rem;
+        }
+        .solutions-grid {
+            grid-template-columns: repeat(3, 1fr);
+            width: 100%;
+            margin: 0 auto;
+        }
+        .solution-card {
+            min-height: 300px;
+        }
+
+
+        /* --- Outcomes Section --- */
+        .outcomes {
+            background-color: var(--light-grey);
+        }
+        .outcomes-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        .outcomes-list {
+            flex: 1;
+        }
+        .outcomes-list ul {
+            list-style: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        .outcomes-list li {
+            padding: 1rem;
+            border-bottom: 1px solid var(--medium-grey);
+        }
+        .outcomes-list li:first-child {
+            padding-top: 0;
+        }
+        .outcomes-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .outcomes-chart {
+            flex: 2;
+            text-align: center;
+        }
+        .outcomes-chart img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        /* --- Industries Section --- */
+        .industries-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        /* --- Why Selode Section --- */
+        .why-selode {
+            background-color: var(--light-grey);
+        }
+        .why-selode-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        /* --- Final CTA --- */
+        .final-cta h2 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        .final-cta .subtitle {
+            margin-bottom: 2.5rem;
+        }
+
+        /* --- Insights Section --- */
+        .insights {
+            background-color: var(--light-grey);
+        }
+        .insights-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .insight-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .insight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .insight-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .insight-content {
+            padding: 1.5rem;
+        }
+        .insight-content .tag {
+            display: inline-block;
+            background-color: var(--medium-grey);
+            color: var(--text-light);
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .insight-content h4 {
+            font-size: 1.1rem;
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            background-color: var(--text-dark);
+            color: #FFFFFF;
+            padding: 60px 0 30px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+            gap: 2rem;
+            padding-bottom: 2rem;
+        }
+        .footer-col h4 {
+            margin-bottom: 1rem;
+            color: #FFFFFF;
+        }
+        .footer-col ul {
+            list-style: none;
+        }
+        .footer-col p {
+             color: var(--text-light);
+        }
+        .footer-col a {
+            color: var(--text-light);
+            text-decoration: none;
+            line-height: 2;
+        }
+        .footer-col a:hover {
+            color: white;
+        }
+        .newsletter form {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        .newsletter input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid var(--text-light);
+            border-radius: 6px 0 0 6px;
+            background: #333;
+            color: white;
+        }
+        .newsletter button {
+            padding: 10px 15px;
+            border: 1px solid var(--primary-blue);
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 0 6px 6px 0;
+            cursor: pointer;
+        }
+        .social-links a {
+            display: inline-block;
+            margin-right: 1rem;
+            border: 1px solid var(--text-light);
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--text-light);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        .footer-bottom p {
+            color: var(--text-light);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
+            .problems-grid, .industries-grid { grid-template-columns: repeat(2, 1fr); }
+            .solutions-grid, .why-selode-grid, .insights-grid { grid-template-columns: 1fr; }
+            .solutions-grid { width: 100%; }
+            .outcomes-content { flex-direction: column; }
+            .footer-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .main-nav ul { display: none; /* Add JS for hamburger menu here */ }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem;}
+            .problems-grid, .industries-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 576px) {
+            h1 { font-size: 2.5rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0">
-                     <a href="#" class="text-2xl font-bold tracking-wider"><span class="text-gray-900">SELODE</span><span class="gradient-text">.AI</span></a>
-                </div>
-                <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-600">
-                    <a href="#problem" class="hover:text-indigo-600 transition-colors">The Problem</a>
-                    <a href="#solutions" class="hover:text-indigo-600 transition-colors">Solutions</a>
-                    <a href="#enterprise" class="hover:text-indigo-600 transition-colors">Enterprise</a>
-                    <a href="#about" class="hover:text-indigo-600 transition-colors">About</a>
-                </nav>
-                 <div class="hidden md:block">
-                     <a href="#contact" class="primary-cta font-bold py-2 px-5 rounded-lg text-sm">Request a Demo</a>
-                 </div>
-                 <button id="mobile-menu-button" class="md:hidden p-2 text-gray-800">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                 </button>
-            </div>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#problem" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">The Problem</a>
-                <a href="#solutions" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Solutions</a>
-                <a href="#enterprise" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Enterprise</a>
-                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">About</a>
-                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Request a Demo</a>
-            </div>
+    <header class="main-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="#" class="logo">SELODE.AI</a>
+                <ul>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="#">Company</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#" class="nav-cta">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <main>
-        <section class="relative pt-48 pb-32">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-gray-900 leading-tight">
-                            Unlock AI's Power. <br><span class="gradient-text">Lock Down Your Data.</span>
-                        </h1>
-                        <p class="mt-6 text-lg text-gray-600 max-w-lg">
-                            Selode.ai provides a complete, on-premise AI ecosystem. Leverage cutting-edge artificial intelligence, from document analysis to process automation, with the absolute guarantee of data sovereignty.
-                        </p>
-                        <div class="mt-10 flex flex-col sm:flex-row items-start gap-4">
-                            <a href="#contact" class="primary-cta font-bold py-4 px-8 rounded-lg w-full sm:w-auto">Request a Consultation</a>
-                            <a href="#solutions" class="secondary-cta font-bold py-4 px-8 rounded-lg w-full sm:w-auto">View Solutions</a>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container text-center">
+                <h1>Sovereign AI, your way.</h1>
+                <p class="subtitle">Unlock the full potential of artificial intelligence while maintaining absolute control over your data and infrastructure.</p>
+                <a href="#" class="btn btn-primary">Book a demo</a>
+            </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section class="partners">
+            <div class="container">
+                <p class="partners-title">STRATEGIC PARTNERS</p>
+                <div class="partner-logos">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/1024px-Dell_Logo.svg.png" alt="Dell Logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/OVHcloud_logo.svg/1200px-OVHcloud_logo.svg.png" alt="OVHcloud Logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/AMD_Logo.svg/1280px-AMD_Logo.svg.png" alt="AMD Logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/DXC_Technology_logo.svg/1280px-DXC_Technology_logo.svg.png" alt="DXC Technology Logo">
+                </div>
+            </div>
+        </section>
+
+        <!-- Problems & Solutions Section -->
+        <section class="problems-solutions">
+            <div class="container">
+                <div class="grid problems-grid">
+                    <div class="card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=60');">
+                        <h3>Problem 1: Data sovereignty</h3>
+                    </div>
+                    <div class="card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=800&q=60');">
+                        <h3>Problem 2: Hardware fragility</h3>
+                    </div>
+                    <div class="card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&w=800&q=60');">
+                        <h3>Problem 3: Geopolitics</h3>
+                    </div>
+                    <div class="card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=60');">
+                        <h3>Problem 4: Licensing terms</h3>
+                    </div>
+                </div>
+                <div class="grid solutions-grid">
+                    <div class="card solution-card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=60');">
+                        <h3>Solution 1: Accelerators</h3>
+                    </div>
+                    <div class="card solution-card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1534972195531-c12835bc9b21?auto=format&fit=crop&w=800&q=60');">
+                        <h3>Solution 2: Sovereign Cloud</h3>
+                    </div>
+                    <div class="card solution-card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://i.imgur.com/8Q14t7T.jpeg');">
+                        <h3>Solution 3: Mother Box</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Outcomes Section -->
+        <section class="outcomes">
+            <div class="container">
+                <h2 class="text-center">Outcomes that matter (proof):</h2>
+                <div class="outcomes-content">
+                    <div class="outcomes-list">
+                        <ul>
+                            <li>Speed</li>
+                            <li>Quality</li>
+                            <li>Privacy</li>
+                            <li>Energy Efficiency</li>
+                            <li>Price</li>
+                        </ul>
+                    </div>
+                    <div class="outcomes-chart">
+                        <img src="https://i.imgur.com/uStiV64.png" alt="Cloud-based AI vs. Selode.ai Performance Chart">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industries Section -->
+        <section class="industries">
+            <div class="container">
+                 <h2 class="text-center">Solutions by Industry</h2>
+                <div class="grid industries-grid">
+                    <div class="card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1579154230942-c65f2a1b2a2a?auto=format&fit=crop&w=800&q=60');"><h3>Biotechnology</h3></div>
+                    <div class="card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1579621970795-87f54f597ba7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');"><h3>Finance & Banking</h3></div>
+                    <div class="card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1538342020169-14a45a3596d6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');"><h3>Healthcare</h3></div>
+                    <div class="card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1612294125977-a7c4c3349428?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');"><h3>Government</h3></div>
+                    <div class="card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1581092921440-4c3038a83413?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');"><h3>Manufacturing</h3></div>
+                    <div class="card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1532187643623-dbf2f5a73b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');"><h3>Research</h3></div>
+                    <div class="card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1521295121783-8a321d551ad2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');"><h3>Energy & Utilities</h3></div>
+                    <div class="card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1528698827591-1b18327cd92c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');"><h3>Telecommunications</h3></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Selode Section -->
+        <section class="why-selode">
+            <div class="container">
+                 <h2 class="text-center">Why Selode</h2>
+                <div class="grid why-selode-grid">
+                    <div class="card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');">
+                        <h3>Team, Partners & AI Leadership</h3>
+                    </div>
+                    <div class="card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1639762681057-408e52192e40?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');">
+                        <h3>Our Approach to Data Sovereignty</h3>
+                    </div>
+                    <div class="card card-with-bg" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1526374965328-5f61d4dc16c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60');">
+                        <h3>Security & Compliance</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="final-cta">
+            <div class="container text-center">
+                <h2>Ready to take control?</h2>
+                <p class="subtitle">Contact us to book a demo and discover how Sovereign AI can transform your organization.</p>
+                <a href="#" class="btn btn-primary">Book a demo</a>
+            </div>
+        </section>
+
+        <!-- Insights Section -->
+        <section class="insights">
+            <div class="container">
+                <h2 class="text-center">Insights</h2>
+                <div class="grid insights-grid">
+                    <div class="insight-card">
+                        <img src="https://images.unsplash.com/photo-1601132359864-c974e79840ac?auto=format&fit=crop&w=800&q=60" alt="Quantum Computing">
+                        <div class="insight-content">
+                            <span class="tag">Podcast</span>
+                            <h4>Navigating the Future: Sovereign Quantum Computing</h4>
                         </div>
                     </div>
-                    <div class="hidden lg:block">
-                        <img src="https://i.ibb.co/3sZg9Jc/mb-future.png" alt="Selode Mother Box" class="w-full h-auto" onerror="this.src='https://placehold.co/600x600/F3F4F6/111827?text=Mother+Box';">
+                    <div class="insight-card">
+                        <img src="https://images.unsplash.com/photo-1677756119517-756a188d2d94?auto=format&fit=crop&w=800&q=60" alt="LLMs & Robots">
+                        <div class="insight-content">
+                            <span class="tag">LLMs</span>
+                            <h4>LLMs & Robots - Sci-Fi Take on the Future</h4>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-16 scroll-animation">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <p class="text-center text-gray-500 font-medium tracking-widest uppercase">Trusted By Industry Leaders</p>
-                <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-                    <img src="https://logolook.net/wp-content/uploads/2021/11/DXC-Technology-Logo.png" alt="DXC Technology" class="mx-auto h-8 partner-logo" onerror="this.style.display='none'">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Nvidia_logo.svg/2560px-Nvidia_logo.svg.png" alt="NVIDIA" class="mx-auto h-8 partner-logo" onerror="this.style.display='none'">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/AMD_Logo.svg/2560px-AMD_Logo.svg.png" alt="AMD" class="mx-auto h-12 partner-logo" onerror="this.style.display='none'">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/1280px-Intel-logo.svg.png" alt="Intel" class="mx-auto h-8 partner-logo" onerror="this.style.display='none'">
-                </div>
-            </div>
-        </section>
-        
-        <section id="problem" class="py-24 bg-white scroll-animation">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div>
-                        <span class="font-bold gradient-text uppercase tracking-widest">The Challenge</span>
-                        <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-6 text-gray-900">Cloud AI Creates a Security Trade-Off</h2>
-                        <p class="text-lg text-gray-600">The productivity gains from mainstream AI have come at the expense of privacy. Sending sensitive corporate data to third-party clouds introduces significant risks: data harvesting, interception, rising costs, and a complete loss of data sovereignty. This is a critical barrier for regulated industries.</p>
-                    </div>
-                    <div>
-                        <img src="https://i.ibb.co/L5BKn0N/cloud-concerns.png" alt="Abstract image representing data leaking from a secure environment into a chaotic cloud" class="w-full h-auto rounded-lg shadow-xl" onerror="this.src='https://placehold.co/600x400/FFFFFF/111827?text=Cloud+AI+Risks';">
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="solutions" class="py-24 scroll-animation">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                     <div class="order-2 lg:order-1">
-                        <img src="https://i.ibb.co/gDF0gL5/selode-solution.png" alt="Abstract image representing chaotic data being organized into a secure system" class="w-full h-auto rounded-lg shadow-xl" onerror="this.src='https://placehold.co/600x400/F3F4F6/111827?text=Selode+Ecosystem';">
-                    </div>
-                    <div class="order-1 lg:order-2">
-                        <span class="font-bold gradient-text uppercase tracking-widest">The Solution</span>
-                        <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-6 text-gray-900">A Private, Offline AI Ecosystem</h2>
-                        <p class="text-lg text-gray-600 mb-8">Selode.ai brings the entire AI workflow inside your own environment. Our ecosystem provides a suite of powerful applications that run on-premise, ensuring your data, your insights, and your control are never compromised.</p>
-                        <div class="grid sm:grid-cols-2 gap-x-8 gap-y-4">
-                            <div class="font-bold text-lg text-gray-800">✓ Private Generative AI Chatbot</div>
-                            <div class="font-bold text-lg text-gray-800">✓ Meeting & Note Recorder</div>
-                            <div class="font-bold text-lg text-gray-800">✓ Database & Spreadsheet AI Engine</div>
-                            <div class="font-bold text-lg text-gray-800">✓ Automated Email Assistant</div>
+                    <div class="insight-card">
+                        <img src="https://images.unsplash.com/photo-1634912265230-3521d3319f75?auto=format&fit=crop&w=800&q=60" alt="Australia's AI Revolution">
+                        <div class="insight-content">
+                            <span class="tag">Article</span>
+                            <h4>Australia's AI Revolution: How Sovereign AI Setups Are Shaping the Future of Artificial Intelligence</h4>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="enterprise" class="py-24 bg-white scroll-animation">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16 max-w-3xl mx-auto">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Enterprise Solutions for Regulated Industries</h2>
-                    <p class="text-lg text-gray-600 mt-4">We provide tailored, high-value AI use cases for sectors where data security and compliance are paramount.</p>
-                </div>
-                <div class="flex justify-center border-b border-gray-200 mb-12">
-                     <button class="tab-button font-medium py-3 px-6 border-b-2 rounded-t-lg transition-colors active" data-tab="insurance">Insurance</button>
-                     <button class="tab-button font-medium py-3 px-6 border-b-2 border-transparent transition-colors" data-tab="realestate">Real Estate</button>
-                     <button class="tab-button font-medium py-3 px-6 border-b-2 border-transparent transition-colors" data-tab="finance">Finance & Legal</button>
-                </div>
-                <div id="tab-content" class="max-w-4xl mx-auto">
-                    <div class="tab-pane grid md:grid-cols-3 gap-8 text-center" data-tab-content="insurance">
-                        <div><h3 class="text-3xl font-bold gradient-text">>90%</h3><p class="mt-2 text-gray-600 font-medium">Reduction in customer onboarding and validation time.</p></div>
-                        <div><h3 class="text-3xl font-bold gradient-text">~5%</h3><p class="mt-2 text-gray-600 font-medium">Improvement in loss ratio through augmented underwriting workflows.</p></div>
-                        <div><h3 class="text-3xl font-bold gradient-text">20-30%</h3><p class="mt-2 text-gray-600 font-medium">Reduction in manual claims processing.</p></div>
-                    </div>
-                    <div class="tab-pane hidden" data-tab-content="realestate">
-                        <p class="text-lg text-center text-gray-600">Securely analyze property images to automatically generate detailed condition reports, identify potential issues, and use AI-powered image editing to virtually furnish spaces for marketing—all without uploading sensitive client images to the cloud.</p>
-                    </div>
-                    <div class="tab-pane hidden" data-tab-content="finance">
-                        <p class="text-lg text-center text-gray-600">Maintain full client confidentiality and regulatory compliance by analyzing financial documents, transcribing client meetings, and querying portfolio data within a secure, air-gapped environment.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="how-it-works" class="py-24 scroll-animation">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16 max-w-3xl mx-auto">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Flexible and Modular Architecture</h2>
-                    <p class="text-lg text-gray-600 mt-4">Our enterprise solutions are built on a modular implementation approach, compatible with NVIDIA, AMD, and Intel hardware, ensuring seamless integration into your existing infrastructure.</p>
-                </div>
-                <img src="https://i.ibb.co/sW2nKx6/modular-approach.png" alt="Abstract diagram of a modular software architecture" class="max-w-4xl mx-auto" onerror="this.src='https://placehold.co/1200x600/F3F4F6/111827?text=Architecture+Diagram';">
-            </div>
-        </section>
-
-        <section id="services" class="py-24 bg-white scroll-animation">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16 max-w-3xl mx-auto">
-                     <h2 class="text-4xl md:text-5xl font-bold text-gray-900">World-Class Managed Services</h2>
-                    <p class="text-lg text-gray-600 mt-4">In partnership with industry leaders like DXC Technology, we provide tiered managed services to align with your business needs and ensure seamless integration and operation.</p>
-                </div>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="glass-card p-8 text-left"><h3 class="text-xl font-bold text-gray-900">Gold Service Level</h3><p class="mt-2 text-gray-600">For business-critical applications, featuring the fastest response times and priority service escalation.</p></div>
-                    <div class="glass-card p-8 text-left"><h3 class="text-xl font-bold text-gray-900">Silver Service Level</h3><p class="mt-2 text-gray-600">For moderate business criticality, with highly responsive times and professional service.</p></div>
-                    <div class="glass-card p-8 text-left"><h3 class="text-xl font-bold text-gray-900">Bronze Service Level</h3><p class="mt-2 text-gray-600">For low business criticality, providing reliable response times and standard support.</p></div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="about" class="py-24 scroll-animation">
-             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto text-left">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 text-center">The Minds Behind the Mission</h2>
-                    <p class="text-xl text-gray-600 mt-8 leading-relaxed">Multiverse Partners was founded by quantitative scientists from Tier 1 financial institutions who saw the security flaws in cloud-based AI. Selode.ai is our answer: an enterprise-grade solution that empowers businesses to harness the power of AI without relinquishing control of their data.</p>
-                    <p class="text-xl text-gray-600 mt-4 leading-relaxed">We are a testament to Australian ingenuity, building sovereign technology to solve a global challenge.</p>
-                    <div class="mt-10 text-center">
-                        <p class="font-semibold text-gray-800">Gerard Solden | Julien Preuilh | Vincent Bouhali | Jeremy Saunders | Jayden Do</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer id="contact" class="bg-gray-800 text-white">
-             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-                 <h2 class="text-4xl font-bold">Begin Your Journey to Sovereign AI.</h2>
-                 <p class="mt-4 text-lg text-gray-400 max-w-xl mx-auto">Contact our team for a private consultation to discuss your specific enterprise needs and discover the transformative power of a truly private AI.</p>
-                 <div class="mt-10">
-                    <a href="mailto:enquiries@multiverse.partners" class="primary-cta font-bold py-4 px-8 rounded-lg text-lg">enquiries@multiverse.partners</a>
-                 </div>
-                 <div class="mt-16 text-sm text-gray-500">
-                    <p>&copy; 2025 Selode.ai - A Multiverse Partners Company</p>
-                 </div>
-             </div>
-        </footer>
     </main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Mobile Menu
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const navLinks = document.querySelectorAll('#mobile-menu a');
-            
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo">SELODE.AI</a>
+                    <p>Software Pathstar Technologies Pty Ltd</p>
+                    <p>ABN: 55 674 541 719</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Insights</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Products</h4>
+                    <ul>
+                        <li><a href="#">Mother Box</a></li>
+                        <li><a href="#">Accelerators</a></li>
+                        <li><a href="#">Sovereign Cloud</a></li>
+                        <li><a href="#">Use Cases</a></li>
+                        <li><a href="#">Roadmap</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">User Agreements</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col newsletter">
+                    <h4>Your weekly guide to the pivotal issues shaping the future of AI</h4>
+                    <form>
+                        <input type="email" placeholder="email@domain.com">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="#">LI</a>
+                        <a href="#">X</a>
+                        <a href="#">YT</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Software Pathstar Technologies Pty Ltd (ABN 55 674 541 719). All Rights Reserved.</p>
+                <p>+61 (02) 7240 6301 | contact@selode.ai</p>
+            </div>
+        </div>
+    </footer>
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                });
-            });
-
-            // Tab functionality
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabPanes = document.querySelectorAll('.tab-pane');
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const tab = button.dataset.tab;
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    tabPanes.forEach(pane => {
-                        pane.classList.toggle('hidden', pane.dataset.tabContent !== tab);
-                    });
-                });
-            });
-
-            // Scroll animations
-            const animatedElements = document.querySelectorAll('.scroll-animation');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            animatedElements.forEach(el => observer.observe(el));
-        });
-    </script>
 </body>
 </html>
 
