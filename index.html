@@ -147,10 +147,11 @@
             background-color: var(--medium-grey);
         }
 
-        /* --- Hero Section --- */
+ /* --- Hero Section --- */
         .hero {
             padding: 120px 0;
-            background-image: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('https://images.unsplash.com/photo-1639762681057-408e52192e40?auto=format&fit=crop&w=1400&q=80');
+            background-color: var(--light-grey); /* Fallback color */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://i.ibb.co/G4RJ3q8N/Screenshot-2025-10-02-at-8-59-27-pm.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -159,6 +160,80 @@
         .hero h1, .hero .subtitle {
             color: var(--text-dark);
         }
+
+
+        /* --- Partners Section --- */
+        .partners {
+            padding: 40px 0;
+            background-color: var(--light-grey);
+        }
+        .partners-title {
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-light);
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+        .partner-logos {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .partner-logos img {
+            max-height: 40px;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .partner-logos img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* --- Problems & Solutions Section --- */
+        .card {
+            background-color: white;
+            padding: 1.5rem;
+            border: 1px solid var(--medium-grey);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 250px;
+        }
+
+        .card-with-bg {
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        
+        .card-with-bg h3 {
+             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+        .problems-grid {
+            grid-template-columns: repeat(4, 1fr);
+            margin-bottom: 2rem;
+        }
+        .solutions-grid {
+            grid-template-columns: repeat(3, 1fr);
+            width: 100%;
+            margin: 0 auto;
+        }
+        .solution-card {
+            min-height: 300px;
+        }
+
 
 
         /* --- Partners Section --- */
