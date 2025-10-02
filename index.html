@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selode.ai - Sovereign AI for the Enterprise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #F3F4F6; /* Light gray background */
+            color: #111827; /* Dark text for readability */
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #4F46E5, #00A9FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .primary-cta {
+            background: linear-gradient(90deg, #4F46E5, #00A9FF);
+            color: #FFFFFF;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px M20px rgba(79, 70, 229, 0.3);
+        }
+        .primary-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 25px rgba(0, 169, 255, 0.4);
+        }
+        .secondary-cta {
+            color: #4F46E5;
+            background-color: transparent;
+            border: 1px solid #4F46E5;
+            transition: all 0.3s ease;
+        }
+        .secondary-cta:hover {
+            background-color: #4F46E5;
+            color: #FFFFFF;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(229, 231, 235, 0.7);
+            border-radius: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(79, 70, 229, 0.3);
+            box-shadow: 0 10px 30px -5px rgba(209, 213, 219, 0.5);
+        }
+        .tab-button.active {
+            color: #4F46E5;
+            border-color: #4F46E5;
+            background-color: #EEF2FF;
+        }
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-animation.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .partner-logo {
+            filter: grayscale(100%);
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0">
+                     <a href="#" class="text-2xl font-bold tracking-wider"><span class="text-gray-900">SELODE</span><span class="gradient-text">.AI</span></a>
+                </div>
+                <nav class="hidden md:flex items-center space-x-8 font-medium text-gray-600">
+                    <a href="#problem" class="hover:text-indigo-600 transition-colors">The Problem</a>
+                    <a href="#solutions" class="hover:text-indigo-600 transition-colors">Solutions</a>
+                    <a href="#enterprise" class="hover:text-indigo-600 transition-colors">Enterprise</a>
+                    <a href="#about" class="hover:text-indigo-600 transition-colors">About</a>
+                </nav>
+                 <div class="hidden md:block">
+                     <a href="#contact" class="primary-cta font-bold py-2 px-5 rounded-lg text-sm">Request a Demo</a>
+                 </div>
+                 <button id="mobile-menu-button" class="md:hidden p-2 text-gray-800">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                 </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#problem" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">The Problem</a>
+                <a href="#solutions" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Solutions</a>
+                <a href="#enterprise" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Enterprise</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">About</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-indigo-600 hover:bg-gray-50">Request a Demo</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="relative pt-48 pb-32">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter text-gray-900 leading-tight">
+                            Unlock AI's Power. <br><span class="gradient-text">Lock Down Your Data.</span>
+                        </h1>
+                        <p class="mt-6 text-lg text-gray-600 max-w-lg">
+                            Selode.ai provides a complete, on-premise AI ecosystem. Leverage cutting-edge artificial intelligence, from document analysis to process automation, with the absolute guarantee of data sovereignty.
+                        </p>
+                        <div class="mt-10 flex flex-col sm:flex-row items-start gap-4">
+                            <a href="#contact" class="primary-cta font-bold py-4 px-8 rounded-lg w-full sm:w-auto">Request a Consultation</a>
+                            <a href="#solutions" class="secondary-cta font-bold py-4 px-8 rounded-lg w-full sm:w-auto">View Solutions</a>
+                        </div>
+                    </div>
+                    <div class="hidden lg:block">
+                        <img src="https://i.ibb.co/3sZg9Jc/mb-future.png" alt="Selode Mother Box" class="w-full h-auto" onerror="this.src='https://placehold.co/600x600/F3F4F6/111827?text=Mother+Box';">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 scroll-animation">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <p class="text-center text-gray-500 font-medium tracking-widest uppercase">Trusted By Industry Leaders</p>
+                <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+                    <img src="https://logolook.net/wp-content/uploads/2021/11/DXC-Technology-Logo.png" alt="DXC Technology" class="mx-auto h-8 partner-logo" onerror="this.style.display='none'">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Nvidia_logo.svg/2560px-Nvidia_logo.svg.png" alt="NVIDIA" class="mx-auto h-8 partner-logo" onerror="this.style.display='none'">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/AMD_Logo.svg/2560px-AMD_Logo.svg.png" alt="AMD" class="mx-auto h-12 partner-logo" onerror="this.style.display='none'">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/1280px-Intel-logo.svg.png" alt="Intel" class="mx-auto h-8 partner-logo" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </section>
+        
+        <section id="problem" class="py-24 bg-white scroll-animation">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span class="font-bold gradient-text uppercase tracking-widest">The Challenge</span>
+                        <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-6 text-gray-900">Cloud AI Creates a Security Trade-Off</h2>
+                        <p class="text-lg text-gray-600">The productivity gains from mainstream AI have come at the expense of privacy. Sending sensitive corporate data to third-party clouds introduces significant risks: data harvesting, interception, rising costs, and a complete loss of data sovereignty. This is a critical barrier for regulated industries.</p>
+                    </div>
+                    <div>
+                        <img src="https://i.ibb.co/gR2XpW4/problem-diagram-light.png" alt="Abstract image representing data leaking from a secure environment into a chaotic cloud" class="w-full h-auto rounded-lg shadow-xl" onerror="this.src='https://placehold.co/600x400/FFFFFF/111827?text=Cloud+AI+Risks';">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="solutions" class="py-24 scroll-animation">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                     <div class="order-2 lg:order-1">
+                        <img src="https://i.ibb.co/C07B8L6/solution-diagram-light.png" alt="Abstract image representing chaotic data being organized into a secure system" class="w-full h-auto rounded-lg shadow-xl" onerror="this.src='https://placehold.co/600x400/F3F4F6/111827?text=Selode+Ecosystem';">
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <span class="font-bold gradient-text uppercase tracking-widest">The Solution</span>
+                        <h2 class="text-3xl md:text-4xl font-bold mt-4 mb-6 text-gray-900">A Private, Offline AI Ecosystem</h2>
+                        <p class="text-lg text-gray-600 mb-8">Selode.ai brings the entire AI workflow inside your own environment. Our ecosystem provides a suite of powerful applications that run on-premise, ensuring your data, your insights, and your control are never compromised.</p>
+                        <div class="grid sm:grid-cols-2 gap-x-8 gap-y-4">
+                            <div class="font-bold text-lg text-gray-800">✓ Private Generative AI Chatbot</div>
+                            <div class="font-bold text-lg text-gray-800">✓ Meeting & Note Recorder</div>
+                            <div class="font-bold text-lg text-gray-800">✓ Database & Spreadsheet AI Engine</div>
+                            <div class="font-bold text-lg text-gray-800">✓ Automated Email Assistant</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="enterprise" class="py-24 bg-white scroll-animation">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 max-w-3xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Enterprise Solutions for Regulated Industries</h2>
+                    <p class="text-lg text-gray-600 mt-4">We provide tailored, high-value AI use cases for sectors where data security and compliance are paramount.</p>
+                </div>
+                <div class="flex justify-center border-b border-gray-200 mb-12">
+                     <button class="tab-button font-medium py-3 px-6 border-b-2 rounded-t-lg transition-colors active" data-tab="insurance">Insurance</button>
+                     <button class="tab-button font-medium py-3 px-6 border-b-2 border-transparent transition-colors" data-tab="realestate">Real Estate</button>
+                     <button class="tab-button font-medium py-3 px-6 border-b-2 border-transparent transition-colors" data-tab="finance">Finance & Legal</button>
+                </div>
+                <div id="tab-content" class="max-w-4xl mx-auto">
+                    <div class="tab-pane grid md:grid-cols-3 gap-8 text-center" data-tab-content="insurance">
+                        <div><h3 class="text-3xl font-bold gradient-text">>90%</h3><p class="mt-2 text-gray-600 font-medium">Reduction in customer onboarding and validation time.</p></div>
+                        <div><h3 class="text-3xl font-bold gradient-text">~5%</h3><p class="mt-2 text-gray-600 font-medium">Improvement in loss ratio through augmented underwriting workflows.</p></div>
+                        <div><h3 class="text-3xl font-bold gradient-text">20-30%</h3><p class="mt-2 text-gray-600 font-medium">Reduction in manual claims processing.</p></div>
+                    </div>
+                    <div class="tab-pane hidden" data-tab-content="realestate">
+                        <p class="text-lg text-center text-gray-600">Securely analyze property images to automatically generate detailed condition reports, identify potential issues, and use AI-powered image editing to virtually furnish spaces for marketing—all without uploading sensitive client images to the cloud.</p>
+                    </div>
+                    <div class="tab-pane hidden" data-tab-content="finance">
+                        <p class="text-lg text-center text-gray-600">Maintain full client confidentiality and regulatory compliance by analyzing financial documents, transcribing client meetings, and querying portfolio data within a secure, air-gapped environment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="py-24 scroll-animation">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 max-w-3xl mx-auto">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Flexible and Modular Architecture</h2>
+                    <p class="text-lg text-gray-600 mt-4">Our enterprise solutions are built on a modular implementation approach, compatible with NVIDIA, AMD, and Intel hardware, ensuring seamless integration into your existing infrastructure.</p>
+                </div>
+                <img src="https://i.ibb.co/c3NfW1H/architecture-diagram-light.png" alt="Abstract diagram of a modular software architecture" class="max-w-4xl mx-auto" onerror="this.src='https://placehold.co/1200x600/F3F4F6/111827?text=Architecture+Diagram';">
+            </div>
+        </section>
+
+        <section id="services" class="py-24 bg-white scroll-animation">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 max-w-3xl mx-auto">
+                     <h2 class="text-4xl md:text-5xl font-bold text-gray-900">World-Class Managed Services</h2>
+                    <p class="text-lg text-gray-600 mt-4">In partnership with industry leaders like DXC Technology, we provide tiered managed services to align with your business needs and ensure seamless integration and operation.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="glass-card p-8 text-left"><h3 class="text-xl font-bold text-gray-900">Gold Service Level</h3><p class="mt-2 text-gray-600">For business-critical applications, featuring the fastest response times and priority service escalation.</p></div>
+                    <div class="glass-card p-8 text-left"><h3 class="text-xl font-bold text-gray-900">Silver Service Level</h3><p class="mt-2 text-gray-600">For moderate business criticality, with highly responsive times and professional service.</p></div>
+                    <div class="glass-card p-8 text-left"><h3 class="text-xl font-bold text-gray-900">Bronze Service Level</h3><p class="mt-2 text-gray-600">For low business criticality, providing reliable response times and standard support.</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="about" class="py-24 scroll-animation">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-left">
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 text-center">The Minds Behind the Mission</h2>
+                    <p class="text-xl text-gray-600 mt-8 leading-relaxed">Multiverse Partners was founded by quantitative scientists from Tier 1 financial institutions who saw the security flaws in cloud-based AI. Selode.ai is our answer: an enterprise-grade solution that empowers businesses to harness the power of AI without relinquishing control of their data.</p>
+                    <p class="text-xl text-gray-600 mt-4 leading-relaxed">We are a testament to Australian ingenuity, building sovereign technology to solve a global challenge.</p>
+                    <div class="mt-10 text-center">
+                        <p class="font-semibold text-gray-800">Gerard Solden | Julien Preuilh | Vincent Bouhali | Jeremy Saunders | Jayden Do</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="contact" class="bg-gray-800 text-white">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+                 <h2 class="text-4xl font-bold">Begin Your Journey to Sovereign AI.</h2>
+                 <p class="mt-4 text-lg text-gray-400 max-w-xl mx-auto">Contact our team for a private consultation to discuss your specific enterprise needs and discover the transformative power of a truly private AI.</p>
+                 <div class="mt-10">
+                    <a href="mailto:enquiries@multiverse.partners" class="primary-cta font-bold py-4 px-8 rounded-lg text-lg">enquiries@multiverse.partners</a>
+                 </div>
+                 <div class="mt-16 text-sm text-gray-500">
+                    <p>&copy; 2025 Selode.ai - A Multiverse Partners Company</p>
+                 </div>
+             </div>
+        </footer>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('#mobile-menu a');
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Tab functionality
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tab = button.dataset.tab;
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    tabPanes.forEach(pane => {
+                        pane.classList.toggle('hidden', pane.dataset.tabContent !== tab);
+                    });
+                });
+            });
+
+            // Scroll animations
+            const animatedElements = document.querySelectorAll('.scroll-animation');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            animatedElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
+```
+
+---
+
+### How to Create the `index.html` File (Terminal Walkthrough)
+
+As requested, here is the clear, step-by-step guide to creating the `index.html` file using your Mac's Terminal. This is the foolproof method that bypasses any issues with text editors.
+
+**Step 1: Copy the HTML Code**
+Before you do anything else, highlight the entire block of code above this section, from `<!DOCTYPE html>` all the way down to `</html>`. Right-click and **Copy** it to your clipboard.
+
+**Step 2: Open the Terminal App**
+Click the Spotlight Search icon (magnifying glass) in the top-right of your screen, type **Terminal**, and press **Return**.
+
+**Step 3: Navigate to Your Desktop**
+In the Terminal window, type this command and press **Return**. This tells the computer to save the file on your Desktop where it's easy to find.
+```bash
+cd Desktop
+```
+
+**Step 4: Create the `index.html` File**
+Now, paste this final command into the Terminal and press **Return**.
+```bash
+pbpaste > index.html
+
